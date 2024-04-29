@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "Examples/EPD_Test.h"
+//#include "QRLib/qr_encode.h"
 
 /* USER CODE END Includes */
 

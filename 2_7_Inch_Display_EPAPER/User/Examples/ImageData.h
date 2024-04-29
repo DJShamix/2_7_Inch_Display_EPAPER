@@ -38,6 +38,7 @@ extern const unsigned char gImage_Lock_screen_promnt[5814];
 extern const unsigned char gImage_Lock_screen_promnt_keyboard[5814];
 extern const unsigned char gImage_Lock_screen_promnt_remember_phrase[5808];
 extern const unsigned char gImage_Loading_logo[5786];
+extern const unsigned char gImage_QR_Scan[5808];
 
 // ImageData2.c
 /* --------------------------------------- */

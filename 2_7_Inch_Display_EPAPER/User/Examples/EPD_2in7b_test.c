@@ -175,28 +175,53 @@ uint8_t EPD_Draw_Enter_PIN_Screen(void){
 	Paint_NewImage(BlackImage, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0, WHITE); // rot - 270
 	Paint_NewImage(RedImage, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0, WHITE);
 
-	// Clear Screen
-	Paint_SelectImage(BlackImage);
-	Paint_Clear(WHITE);
-	Paint_SelectImage(RedImage);
-	Paint_Clear(WHITE);
-	EPD_2IN7B_Display(BlackImage, RedImage);
-	//EPD_2IN7B_Sleep();
-	DEV_Delay_ms(5000);
-
-
+//	// Clear Screen
+//	Paint_SelectImage(BlackImage);
+//	Paint_Clear(WHITE);
+//	Paint_SelectImage(RedImage);
+//	Paint_Clear(WHITE);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	//EPD_2IN7B_Sleep();
+//	DEV_Delay_ms(5000);
+//
+//	// Display Intro screen
 //	Paint_SelectImage(BlackImage);
 //	Paint_SetRotate(0);
-//	Paint_DrawString_EN(10, 0, "<- Back", &Font8, BLACK, WHITE);
-//	Paint_DrawString_EN(EPD_2IN7B_WIDTH/2, 0, "0", &Font8, BLACK, WHITE);
+//	Paint_DrawBitMap_Paste(gImage_Loading_logo, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	DEV_Delay_ms(5000);
+//
+//	// Clear Screen
+//	Paint_SelectImage(BlackImage);
+//	Paint_Clear(WHITE);
+//	Paint_SelectImage(RedImage);
+//	Paint_Clear(WHITE);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	DEV_Delay_ms(2000);
+//
+//	// Display Lock screen
+//	Paint_SelectImage(BlackImage);
+//	Paint_SetRotate(0);
+//	Paint_DrawBitMap_Paste(gImage_Lock_screen_promnt, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	DEV_Delay_ms(2000);
+//
+//	// Display Keyboard screen
+//	Paint_SelectImage(BlackImage);
+//	Paint_SetRotate(0);
+//	Paint_DrawBitMap_Paste(gImage_Lock_screen_promnt_keyboard, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	//EPD_2IN7B_Sleep();
+//	DEV_Delay_ms(2000);
+//
+//	// Display Remember Phrase screen
+//	Paint_SelectImage(BlackImage);
+//	Paint_SetRotate(0);
+//	Paint_DrawBitMap_Paste(gImage_Lock_screen_promnt_remember_phrase, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	EPD_2IN7B_Sleep();
+//	DEV_Delay_ms(5000);
 
-
-	// Display Intro screen
-	Paint_SelectImage(BlackImage);
-	Paint_SetRotate(0);
-	Paint_DrawBitMap_Paste(gImage_Loading_logo, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
-	EPD_2IN7B_Display(BlackImage, RedImage);
-	DEV_Delay_ms(5000);
 
 	// Clear Screen
 	Paint_SelectImage(BlackImage);
@@ -204,31 +229,15 @@ uint8_t EPD_Draw_Enter_PIN_Screen(void){
 	Paint_SelectImage(RedImage);
 	Paint_Clear(WHITE);
 	EPD_2IN7B_Display(BlackImage, RedImage);
-	DEV_Delay_ms(2000);
+	DEV_Delay_ms(500);
 
-	// Display Lock screen
+	//Display QR
 	Paint_SelectImage(BlackImage);
 	Paint_SetRotate(0);
-	Paint_DrawBitMap_Paste(gImage_Lock_screen_promnt, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
-	EPD_2IN7B_Display(BlackImage, RedImage);
-	DEV_Delay_ms(2000);
-
-	// Display Keyboard screen
+	Paint_DrawBitMap_Paste(gImage_QR_Scan, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
 	Paint_SelectImage(BlackImage);
-	Paint_SetRotate(0);
-	Paint_DrawBitMap_Paste(gImage_Lock_screen_promnt_keyboard, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
+	create_test_qr(26, 75);
 	EPD_2IN7B_Display(BlackImage, RedImage);
-	//EPD_2IN7B_Sleep();
-	DEV_Delay_ms(2000);
-
-	// Display Remember Phrase screen
-	Paint_SelectImage(BlackImage);
-	Paint_SetRotate(0);
-	Paint_DrawBitMap_Paste(gImage_Lock_screen_promnt_remember_phrase, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
-	EPD_2IN7B_Display(BlackImage, RedImage);
-	EPD_2IN7B_Sleep();
-	DEV_Delay_ms(5000);
-
 
 	free(BlackImage);
 	BlackImage = NULL;

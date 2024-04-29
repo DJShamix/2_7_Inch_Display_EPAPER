@@ -36,6 +36,8 @@
 #include "../Config/Debug.h"
 #include <stdlib.h> // malloc() free()
 
+#include "QRLib/qr_test.h"
+
 int EPD_init();
 int EPD_test(void);
 
