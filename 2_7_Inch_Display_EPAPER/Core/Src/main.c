@@ -27,6 +27,7 @@
 
 #include "Examples/EPD_Test.h"
 //#include "QRLib/qr_encode.h"
+#include "Logic_controller/EPD_Display_controller.h"
 
 /* USER CODE END Includes */
 
@@ -96,7 +97,9 @@ int main(void)
 
   EPD_init();
 
-  EPD_Draw_Enter_PIN_Screen();
+  EPD_init_states_machine();
+
+  //EPD_Draw_Enter_PIN_Screen();
 
   //EPD_test();
 
@@ -110,6 +113,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  EPD_change_state();
+
+	  EPD_Draw_Screen();
+
   }
   /* USER CODE END 3 */
 }

@@ -146,14 +146,6 @@ enum screen_modes{
 
 };
 
-uint8_t EPD_Draw_Loading_Screen(void){
-
-	Paint_Clear(WHITE);
-
-
-	return 0;
-}
-
 
 
 uint8_t EPD_Draw_Enter_PIN_Screen(void){
@@ -223,21 +215,21 @@ uint8_t EPD_Draw_Enter_PIN_Screen(void){
 //	DEV_Delay_ms(5000);
 
 
-	// Clear Screen
-	Paint_SelectImage(BlackImage);
-	Paint_Clear(WHITE);
-	Paint_SelectImage(RedImage);
-	Paint_Clear(WHITE);
-	EPD_2IN7B_Display(BlackImage, RedImage);
-	DEV_Delay_ms(500);
-
-	//Display QR
-	Paint_SelectImage(BlackImage);
-	Paint_SetRotate(0);
-	Paint_DrawBitMap_Paste(gImage_QR_Scan, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
-	Paint_SelectImage(BlackImage);
-	create_test_qr(26, 75);
-	EPD_2IN7B_Display(BlackImage, RedImage);
+//	// Clear Screen
+//	Paint_SelectImage(BlackImage);
+//	Paint_Clear(WHITE);
+//	Paint_SelectImage(RedImage);
+//	Paint_Clear(WHITE);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
+//	DEV_Delay_ms(500);
+//
+//	//Display QR
+//	Paint_SelectImage(BlackImage);
+//	Paint_SetRotate(0);
+//	Paint_DrawBitMap_Paste(gImage_QR_Scan, 0, 0, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0);
+//	Paint_SelectImage(BlackImage);
+//	create_test_qr(26, 75);
+//	EPD_2IN7B_Display(BlackImage, RedImage);
 
 	free(BlackImage);
 	BlackImage = NULL;
@@ -253,17 +245,3 @@ uint8_t EPD_Draw_Enter_PIN_Screen(void){
 }
 
 
-
-
-uint8_t EPD_Draw_SeedPhrase_Screen(void){
-
-
-	return 0;
-}
-
-
-
-uint8_t EPD_Draw_QR_Screen(void){
-
-	return 0;
-}

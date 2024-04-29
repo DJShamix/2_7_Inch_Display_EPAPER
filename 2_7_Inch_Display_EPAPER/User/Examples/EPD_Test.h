@@ -41,9 +41,6 @@
 int EPD_init();
 int EPD_test(void);
 
-uint8_t EPD_Draw_Loading_Screen(void);
 uint8_t EPD_Draw_Enter_PIN_Screen(void);
-uint8_t EPD_Draw_SeedPhrase_Screen(void);
-uint8_t EPD_Draw_QR_Screen(void);
 
 #endif
