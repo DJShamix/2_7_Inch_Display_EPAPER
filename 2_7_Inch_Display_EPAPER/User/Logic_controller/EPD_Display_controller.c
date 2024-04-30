@@ -11,6 +11,7 @@
 #include "../Examples/EPD_Test.h"
 #include "../e-Paper/EPD_2in7b.h"
 
+#include "portable.h"
 
 struct EPD_Controller_params EPD_params;
 
@@ -49,11 +50,11 @@ uint8_t EPD_Draw_Screen(void){
 	UWORD Imagesize = ((EPD_2IN7B_WIDTH % 8 == 0)? (EPD_2IN7B_WIDTH / 8 ): (EPD_2IN7B_WIDTH / 8 + 1)) * EPD_2IN7B_HEIGHT;
 	//UWORD Imagesize = EPD_2IN7B_WIDTH * EPD_2IN7B_HEIGHT;
 
-	if((BlackImage = (UBYTE *)malloc(Imagesize)) == NULL) {
+	if((BlackImage = (UBYTE *)pvPortMalloc(Imagesize)) == NULL) {
 		printf("Failed to apply for black memory...\r\n");
 		return -1;
 	}
-	if((RedImage = (UBYTE *)malloc(Imagesize)) == NULL) {
+	if((RedImage = (UBYTE *)pvPortMalloc(Imagesize)) == NULL) {
 		printf("Failed to apply for red memory...\r\n");
 		return -1;
 	}
@@ -85,9 +86,9 @@ uint8_t EPD_Draw_Screen(void){
 
 
 	// Free allocated RAM memory
-	free(BlackImage);
+	vPortFree(BlackImage);
 	BlackImage = NULL;
-	free(RedImage);
+	vPortFree(RedImage);
 	RedImage = NULL;
 
 	// Enter EPD sleep mode
@@ -116,7 +117,13 @@ void EPD_diplay_screen_info(void){
 void EPD_change_state(void){
 
 	static uint32_t last_display_update;
-	if(last_display_update + 10000 <= HAL_GetTick()){
+
+	if(EPD_params.display_need_update){
+		last_display_update = HAL_GetTick();
+		return;
+	}
+
+	if(last_display_update + 15000 <= HAL_GetTick()){
 
 		switch(EPD_params.screen_state){
 

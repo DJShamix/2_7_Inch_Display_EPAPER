@@ -54,6 +54,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "cmsis_os.h"
+
 /**
  * data
 **/
@@ -81,7 +83,7 @@
 /**
  * delay x ms
 **/
-#define DEV_Delay_ms(__xms) HAL_Delay(__xms);
+#define DEV_Delay_ms(__xms) osDelay(__xms);// HAL_Delay(__xms);
 
 void DEV_SPI_WriteByte(UBYTE value);
 void DEV_SPI_Write_nByte(UBYTE *value, UDOUBLE len);

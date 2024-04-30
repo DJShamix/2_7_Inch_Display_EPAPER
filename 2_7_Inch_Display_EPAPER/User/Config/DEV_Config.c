@@ -35,12 +35,14 @@
 extern SPI_HandleTypeDef hspi1;
 void DEV_SPI_WriteByte(UBYTE value)
 {
-    HAL_SPI_Transmit(&hspi2, &value, 1, 1000);
+//    HAL_SPI_Transmit(&hspi2, &value, 1, 1000);
+    HAL_SPI_Transmit_DMA(&hspi2, &value, 1);
 }
 
 void DEV_SPI_Write_nByte(UBYTE *value, UDOUBLE len)
 {
-    HAL_SPI_Transmit(&hspi2, value, len, 1000);
+//    HAL_SPI_Transmit(&hspi2, value, len, 1000);
+    HAL_SPI_Transmit_DMA(&hspi2, value, len);
 }
 
 void DEV_GPIO_Mode(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, UWORD Mode)
