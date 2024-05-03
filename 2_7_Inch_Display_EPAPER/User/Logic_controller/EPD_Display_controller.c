@@ -63,10 +63,16 @@ uint8_t EPD_Draw_Screen(void){
 	Paint_NewImage(RedImage, EPD_2IN7B_WIDTH, EPD_2IN7B_HEIGHT, 0, WHITE);
 
 	// Clear Screen
+	static uint8_t clear_screen = 1;
 	Paint_SelectImage(BlackImage);
 	Paint_Clear(WHITE);
 	Paint_SelectImage(RedImage);
 	Paint_Clear(WHITE);
+	if(clear_screen){
+		EPD_2IN7B_Display(BlackImage, RedImage);
+		DEV_Delay_ms(3000);
+		clear_screen = 0;
+	}
 	//EPD_2IN7B_Display(BlackImage, RedImage);
 	//DEV_Delay_ms(100);
 
